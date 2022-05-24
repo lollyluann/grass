@@ -8,15 +8,15 @@ import torch.nn.functional as F
 import numpy as np
 from tqdm import tqdm
 
-from utils import AverageMeter, accuracy
+from utils import AverageMeter, accuracy, full_detach
 from loss import LossComputer
 
 from pytorch_transformers import AdamW, WarmupLinearSchedule
-
-device = torch.device("cuda")
 import pandas as pd
 import os
 
+#os.putenv("CUDA_VISIBLE_DEVICES", "1")
+device = torch.device("cuda")
 
 def run_epoch(
     epoch,
@@ -39,13 +39,10 @@ def run_epoch(
     scheduler is only used inside this function if model is bert.
     """
 
-    
-    
     if is_training:
         model.train()
         if (args.model.startswith("bert") and args.use_bert_params): # or (args.model == "bert"):
-            model.zero_grad()
-        
+            model.zero_grad() 
     else:
         model.eval()
 
@@ -53,7 +50,7 @@ def run_epoch(
         prog_bar_loader = tqdm(loader)
     else:
         prog_bar_loader = loader
-
+    
     with torch.set_grad_enabled(is_training):
 
         for batch_idx, batch in enumerate(prog_bar_loader):
@@ -61,8 +58,9 @@ def run_epoch(
             x = batch[0]
             y = batch[1]
             g = batch[2]
-            data_idx = batch[3]
-            
+            l = batch[3]
+            data_idx = batch[4]
+
             if args.model.startswith("bert"):
                 input_ids = x[:, :, 0]
                 input_masks = x[:, :, 1]
@@ -76,7 +74,6 @@ def run_epoch(
             else:
                 # outputs.shape: (batch_size, num_classes)
                 outputs = model(x)
-
                 
             output_df = pd.DataFrame()
 
@@ -106,7 +103,7 @@ def run_epoch(
             for class_ind in range(probs.shape[1]):
                 output_df[f"pred_prob_{run_name}_{class_ind}"] = probs[:, class_ind]
 
-            loss_main = loss_computer.loss(outputs, y, g, is_training)
+            loss_main = loss_computer.loss(outputs, y, l, is_training)
 
             if is_training:
                 if (args.model.startswith("bert") and args.use_bert_params): 
@@ -120,7 +117,7 @@ def run_epoch(
                     optimizer.zero_grad()
                     loss_main.backward()
                     optimizer.step()
-
+            
             if is_training and (batch_idx + 1) % log_every == 0:
                 run_stats = loss_computer.get_stats(model, args)
                 csv_logger.log(epoch, batch_idx, run_stats)
@@ -136,6 +133,7 @@ def run_epoch(
                     wandb_stats["batch_idx"] = batch_idx
                     wandb.log(wandb_stats)
 
+        
         if run_name is not None:
             save_dir = "/".join(csv_logger.path.split("/")[:-1])
             output_df.to_csv(
@@ -254,6 +252,12 @@ def train(
     for epoch in range(epoch_offset, epoch_offset + args.n_epochs):
         logger.write("\nEpoch [%d]:\n" % epoch)
         logger.write(f"Training:\n")
+
+        if epoch%50==0 and epoch!=0:
+            extract_grads = True
+        else: extract_grads = False
+        extract_grads = False
+
         run_epoch(
             epoch,
             model,

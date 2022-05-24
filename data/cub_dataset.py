@@ -59,13 +59,13 @@ class CUBDataset(ConfounderDataset):
         # Map to groups
         self.n_groups = pow(2, 2)
         assert self.n_groups == 4, "check the code if you are running otherwise"
-        '''if override_groups_file and override_groups_file!="None":
+        if override_groups_file and override_groups_file!="None":
             # read in file and set as group array
             self.group_array = pd.read_csv(os.path.join(self.data_dir, override_groups_file), index_col=False)['clustered_idx'].to_numpy()
             assert np.unique(self.group_array).size == self.n_groups #+ 1
-        else:'''
-        self.group_array = (self.y_array * (self.n_groups / 2) +
-                            self.confounder_array).astype("int")
+        else:
+            self.group_array = (self.y_array * (self.n_groups / 2) +
+                                self.confounder_array).astype("int")
 
         # Extract filenames and splits
         self.filename_array = self.metadata_df["img_filename"].values

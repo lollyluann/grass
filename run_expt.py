@@ -14,7 +14,7 @@ from data.data import dataset_attributes, shift_types, prepare_data, log_data
 from data import dro_dataset
 from data import folds
 from utils import set_seed, Logger, CSVBatchLogger, log_args, get_model, hinge_loss
-from train2 import train
+from train import train
 from data.folds import Subset, ConcatDataset
 
 
@@ -61,7 +61,7 @@ def main(args):
         train_data, val_data = prepare_data(args, train=True)
 
     #########################################################################
-    ###################### Prepare data for our method ######################
+    ############################## Prepare data #############################
     #########################################################################
 
     # Should probably not be upweighting if folds are specified.

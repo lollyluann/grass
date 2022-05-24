@@ -96,15 +96,7 @@ print('Baseline')
 _ = group_metrics(full_detach(test_y), base_predict, test_a, label_protected=1, label_good=0)
 print('Test biased accuracy', np.mean(predict(model, test_biased_x) == test_biased_y))
 
-## Base ideal classifier
-'''base_lr_ideal = LogisticRegression(solver='liblinear', fit_intercept=True)
-base_lr_ideal.fit(test_x, test_y)
-base_predict_ideal = base_lr_ideal.predict(test_x)
-print('\nBaseline IDEAL')
-_ = group_metrics(test_y, base_predict_ideal, test_a, label_protected=1, label_good=0)
-'''
 plot_decision(full_detach(test_x), test_a, full_detach(test_y), lambda x: predict(model, x), title='Log Reg')
-#plot_decision(test_x, test_a, test_y, lambda x: base_lr_ideal.predict_proba(x)[:,1], title='Log Reg IDEAL')
 
 weight_traingrad = np.array(weight_traingrad)
 bias_traingrad = np.array(bias_traingrad)
@@ -113,8 +105,6 @@ print(weight_traingrad.sum(), bias_traingrad.sum())
 plot_grad(full_detach(train_x), train_a, full_detach(train_y), input_traingrad, title="TrainGradInput")
 plot_grad(full_detach(train_x), train_a, full_detach(train_y), weight_traingrad, title="TrainGradWeight")
 plot_3d(full_detach(train_x), full_detach(train_y), train_a, weight_traingrad, bias_traingrad, title="TrainGradWeightsBias")
-#plot_grad(full_detach(train_x), train_a, full_detach(train_y), bias_traingrad, title="TrainGradBias")
-#plot_grad(full_detach(test_x), test_a, full_detach(test_y), input_testgrad, title="TestGrad")
 
 grads = np.append(weight_traingrad, bias_traingrad[np.newaxis].T, axis=1)
 print(weight_traingrad.shape, bias_traingrad.shape, grads.shape)
