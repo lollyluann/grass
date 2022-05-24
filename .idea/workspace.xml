@@ -2,48 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="187323a8-2e26-40ad-888c-0935ea987623" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cluster_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dbscan_cluster.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extract_grads.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cub_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/cub_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extractable_resnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/extractable_resnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loader_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/loader_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resnet50_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/feature_extract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_expt.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_expt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/.clustering.py.swp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/cluster_ep_0.05.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/cluster_ep_0.1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/cluster_ep_0.25.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/cluster_ep_0.5.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/cluster_ep_1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_decision_Log Reg IDEAL.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_decision_Log Reg.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_grad_TestGrad.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_grad_TrainGrad.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_grad_TrainGradInput.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_grad_TrainGradWeight.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_sample_Log Reg IDEAL.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_sample_Log Reg.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_sample_Test.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/plot_sample_Train.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/simulate_grad.py" beforeDir="false" afterPath="$PROJECT_DIR$/simpledata/simulate_grad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpledata/weight_bias_grads_TrainGradWeightsBias.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/split_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/split_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/umap_plot.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/clustering.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/clustering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/metrics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/sampler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/simulate_grad.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/sklearn_comparison.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/sklearn_comparison.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/spherical_kmeans.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/spherical_kmeans.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/train_loss.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/val_accuracies.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/waterbirds_logreg_grads/val_loss.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/write_pretrained_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/write_pretrained_features.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add_group_labels.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/add_group_labels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adjust_group_labels.py" beforeDir="false" afterPath="$PROJECT_DIR$/legacy_code/adjust_group_labels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outliers.py" beforeDir="false" afterPath="$PROJECT_DIR$/outliers.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,31 +23,31 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="31" />
+          <entry key="py" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="31" />
+          <entry key="Python" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="33" />
-          <entry key="py" value="1847" />
+          <entry key="py" value="1923" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="33" />
-          <entry key="Python" value="1847" />
+          <entry key="Python" value="1923" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -97,13 +59,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/feature_extract.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/legacy_code/add_group_labels.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="15" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+            <state relative-caret-position="323">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
               <folding>
-                <element signature="e#0#16#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/legacy_code/adjust_group_labels.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/outliers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1089">
+              <caret line="10" column="74" selection-start-line="10" selection-start-column="74" selection-end-line="10" selection-end-column="74" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbscan_cluster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="12" column="63" lean-forward="true" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
+            <state relative-caret-position="353">
+              <caret line="56" column="30" lean-forward="true" selection-start-line="49" selection-end-line="56" selection-end-column="30" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <marker date="1653434521507" expanded="true" signature="1323:2405" ph="..." />
@@ -202,6 +188,9 @@
       <find>export_grads</find>
       <find>extract_grad</find>
       <find>data_grad</find>
+      <find>group_labels_adj</find>
+      <find>corrupt_labels</find>
+      <find>outliers_file</find>
     </findStrings>
     <replaceStrings>
       <replace>nargs.model_name</replace>
@@ -225,6 +214,9 @@
         <option value="$PROJECT_DIR$/simpledata/simulate_grad.py" />
         <option value="$PROJECT_DIR$/extract_grads.py" />
         <option value="$PROJECT_DIR$/data/cub_dataset.py" />
+        <option value="$PROJECT_DIR$/legacy_code/adjust_group_labels.py" />
+        <option value="$PROJECT_DIR$/add_group_labels.py" />
+        <option value="$PROJECT_DIR$/outliers.py" />
       </list>
     </option>
   </component>
@@ -252,11 +244,6 @@
             <path>
               <item name="grass" type="b2602c69:ProjectViewProjectNode" />
               <item name="grass" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="grass" type="b2602c69:ProjectViewProjectNode" />
-              <item name="grass" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -305,13 +292,13 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16133866" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16133866" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32930514" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32930514" />
@@ -502,17 +489,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbscan_cluster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="12" column="63" lean-forward="true" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <marker date="1653434521507" expanded="true" signature="1323:2405" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/confounder_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-697">
@@ -583,6 +559,47 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="80" column="30" lean-forward="true" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbscan_cluster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="56" column="30" lean-forward="true" selection-start-line="49" selection-end-line="56" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1653434521507" expanded="true" signature="1323:2405" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/legacy_code/adjust_group_labels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/outliers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1089">
+          <caret line="10" column="74" selection-start-line="10" selection-start-column="74" selection-end-line="10" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/legacy_code/add_group_labels.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
