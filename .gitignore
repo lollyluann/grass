@@ -1,0 +1,8 @@
+wandb/
+results/
+__pycache__/
+.ipynb_checkpoints/
+*.npy
+*.tar.gz
+cub/
+.ssh/
