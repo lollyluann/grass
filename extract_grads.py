@@ -41,7 +41,9 @@ def evaluate(model, data, labels, groups, verbose=False):
             print(group_accs[ig])
     if verbose:
         print("Overall accuracy", acc)
+        print("Confusion matrix of predictions")
         print(confusion_matrix(labels, predictions))
+        print("\n")
     return acc, group_accs
 
 def export_grads(x, y, model, model_name, data_name, extracted_dir, loss_func=torch.nn.BCELoss()):

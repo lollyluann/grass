@@ -225,8 +225,8 @@ def load_class_data(classi=0):
   return dist, grads, groups, all_i
 
 
-def cluster_and_extract(eps, ms, modelname, out_dir):
-    dfc = pd.DataFrame({'idx': np.load('test_data_i_resnet_' + modelname + '.npy'),
+def cluster_and_extract(eps, ms, modelname, in_dir, out_dir):
+    dfc = pd.DataFrame({'idx': np.load(in_dir + 'test_data_i_resnet_' + modelname + '.npy'),
                         'clustered_idx': np.load('test_data_l_resnet_' + modelname + '.npy')})
 
     i = 0

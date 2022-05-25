@@ -51,11 +51,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", type=str, default="pretrained-50")
     parser.add_argument("--out_dir", type=str, default="cub/data/waterbird_complete95_forest2water2")
+    parser.add_argument("--extracted_dir", type=str, default="extracted/")
     parser.add_argument("--eps", type=float, default=0.4)
     parser.add_argument("--min_samples", type=int, default=100)
 
     args = parser.parse_args()
-    cluster_and_extract(eps=args.eps, ms=args.min_samples, modelname=args.model_name, out_dir=args.out_dir)
+    cluster_and_extract(eps=args.eps, ms=args.min_samples, modelname=args.model_name, in_dir=args.extracted_dir, out_dir=args.out_dir)
 
 
     # DBSCAN testing with true group labels

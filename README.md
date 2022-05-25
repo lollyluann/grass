@@ -70,6 +70,8 @@ Add the following:
 ```
 python feature_extract.py
 
+python extract_grads.py
+
 python generate_downstream.py --exp_name CUB_sample_exp --dataset CUB --n_epochs 300 --lr 1e-5 --weight_decay 1.0 --method ERM
 
 bash results/CUB/CUB_sample_exp/ERM_upweight_0_epochs_300_lr_1e-05_weight_decay_1.0/job.sh
