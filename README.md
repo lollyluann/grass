@@ -19,7 +19,7 @@ To get the data, run the following commands in the `grass/` directory:
 
 ```
 wget -c https://nlp.stanford.edu/data/dro/waterbird_complete95_forest2water2.tar.gz
-mkdir cub && cd cub/ && mkdir data
+mkdir cub && mkdir cub/data/
 tar -xf waterbird_complete95_forest2water2.tar.gz -C cub/data/
 ```
 
