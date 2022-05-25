@@ -1,8 +1,6 @@
-import torch, math, os
+import torch
 from tqdm import tqdm
 import numpy as np
-from utils import simul_x_y_a, add_outliers, plot_sample, plot_decision, plot_grad, plot_3d
-from metrics import group_metrics
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sampler import BalancedBatchSampler
 import matplotlib.pyplot as plt

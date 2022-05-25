@@ -150,10 +150,10 @@ if __name__ == "__main__":
     # os.putenv("CUDA_VISIBLE_DEVICES", "1")
     device = torch.device("cuda")
 
-    if args.model_name == "pretrained-50":
+    if args_p.model_name == "pretrained-50":
         model = torchvision.models.resnet50(pretrained=True)
         model = torch.nn.Sequential(*list(model.children())[:-1])
-    elif args.model_name == "pretrained-18":
+    elif args_p.model_name == "pretrained-18":
         model = torchvision.models.resnet18(pretrained=True)
         model = torch.nn.Sequential(*list(model.children())[:-1])
     else:

@@ -1,4 +1,4 @@
-# Just Train Twice: Improving Group Robustness without Training Group Information
+# GraSS: Gradient Subgroup Scanning for Distributionally and Outlier Robust Models
 
 This code implements the following paper: 
 
@@ -14,25 +14,27 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Downloading Datasets
+## Downloading Dataset
 
-- **Waterbirds:** Download waterbirds from [here](https://nlp.stanford.edu/data/dro/waterbird_complete95_forest2water2.tar.gz) and put it in `jtt/cub`.
-    - In that directory, our code expects `data/waterbird_complete95_forest2water2/` with `metadata.csv` inside.
+**Waterbirds:** Download waterbirds from [here](https://nlp.stanford.edu/data/dro/waterbird_complete95_forest2water2.tar.gz) and put it in `grass/cub/data`.
+  - In that directory, our code expects `waterbird_complete95_forest2water2/` with `metadata.csv` inside.
 
-- **CelebA:** Download CelebA from [here](https://www.kaggle.com/jessicali9530/celeba-dataset) and put it in `jtt/celebA`.
-    - In that directory, our code expects the following files/folders:
-        - data/list_eval_partition.csv
-        - data/list_attr_celeba.csv
-        - data/img_align_celeba/
+To get the data, run the following commands in the `grass/` directory:
 
-- **MultiNLI:** Follow instructions [here](https://github.com/kohpangwei/group_DRO#multinli-with-annotated-negations) to download this dataset and put in `jtt/multinli`
-    - In that directory, our code expects the following files/folders:
-        - data/metadata_random.csv
-        - glue_data/MNLI/cached_dev_bert-base-uncased_128_mnli
-        - glue_data/MNLI/cached_dev_bert-base-uncased_128_mnli-mm
-        - glue_data/MNLI/cached_train_bert-base-uncased_128_mnli
+```
+wget -c https://nlp.stanford.edu/data/dro/waterbird_complete95_forest2water2.tar.gz
+mkdir cub && cd cub/ && mkdir data
+tar -xf waterbird_complete95_forest2water2.tar.gz -C cub/data/
+```
 
-- **CivilComments:** This dataset can be downloaded from [here](https://worksheets.codalab.org/rest/bundles/0x8cd3de0634154aeaad2ee6eb96723c6e/contents/blob/) and put it in `jtt/jigsaw`. In that directory, our code expects a folder `data` with the downloaded dataset.
+**Outliers:** Introduce 5% outliers into the dataset. The new dataset with outliers will replace `waterbird_complete95_forest2water2/`. The original unmodified dataset will be backed-up in `waterbird_original/`.
+To introduce outliers into the dataset, run the following commands:
+
+```
+python generate_outliers.py
+cd cub/data/
+mv waterbird_complete95_forest2water2/ waterbird_original/ && mv waterbird_outliers/ waterbird_complete95_forest2water2/
+```
 
 ## **Running our Method**
 
@@ -66,6 +68,8 @@ Add the following:
 ## Sample Commands for running JTT on Waterbirds
 
 ```
+python feature_extract.py
+
 python generate_downstream.py --exp_name CUB_sample_exp --dataset CUB --n_epochs 300 --lr 1e-5 --weight_decay 1.0 --method ERM
 
 bash results/CUB/CUB_sample_exp/ERM_upweight_0_epochs_300_lr_1e-05_weight_decay_1.0/job.sh
@@ -75,48 +79,4 @@ python process_training.py --exp_name CUB_sample_exp --dataset CUB --folder_name
 bash results/CUB/CUB_sample_exp/train_downstream_ERM_upweight_0_epochs_300_lr_1e-05_weight_decay_1.0/final_epoch50/JTT_upweight_100_epochs_300_lr_1e-05_weight_decay_1.0/job.sh
 
 python analysis.py --exp_name CUB_sample_exp/train_downstream_ERM_upweight_0_epochs_300_lr_1e-05_weight_decay_1.0/final_epoch60/ --dataset CUB
-```
-
-## Sample Commands for running JTT on CelebA
-
-```
-python generate_downstream.py --exp_name CelebA_sample_exp --dataset CelebA --n_epochs 50 --lr 1e-5 --weight_decay 0.1 --method ERM
-
-bash results/CelebA/CelebA_sample_exp/ERM_upweight_0_epochs_50_lr_1e-05_weight_decay_0.1/job.sh
-
-python process_training.py --exp_name CelebA_sample_exp --dataset CelebA --folder_name ERM_upweight_0_epochs_50_lr_1e-05_weight_decay_0.1 --lr 1e-05 --weight_decay 0.1 --final_epoch 1 --deploy
-
-sbatch results/CelebA/CelebA_sample_exp/train_downstream_ERM_upweight_0_epochs_50_lr_1e-05_weight_decay_0.1/final_epoch1/JTT_upweight_50_epochs_50_lr_1e-05_weight_decay_0.1/job.sh
-
-python analysis.py --exp_name CelebA_sample_exp/train_downstream_ERM_upweight_0_epochs_50_lr_1e-05_weight_decay_0.1/final_epoch1/ --dataset CelebA
-```
-
-
-## Sample Commands for running JTT on MultiNLI
-
-```
-python generate_downstream.py --exp_name MultiNLI_sample_exp --dataset MultiNLI --n_epochs 5 --lr 2e-5 --weight_decay 0 --method ERM
-
-bash results/MultiNLI/MultiNLI_sample_exp/ERM_upweight_0_epochs_5_lr_2e-05_weight_decay_0/job.sh
-
-python process_training.py --exp_name MultiNLI_sample_exp --dataset MultiNLI --folder_name ERM_upweight_0_epochs_5_lr_2e-05_weight_decay_0.0_nobert --lr 1e-05 --weight_decay 0.1 --final_epoch 2 --deploy
-
-bash results/MultiNLI/MultiNLI_sample_exp/train_downstream_ERM_upweight_0_epochs_5_lr_2e-05_weight_decay_0.0/final_epoch2/JTT_upweight_4_epochs_5_lr_2e-05_weight_decay_0/job.sh
-
-python analysis.py --exp_name MultiNLI_sample_exp/train_downstream_ERM_upweight_0_epochs_5_lr_2e-05_weight_decay_0.0/final_epoch2/ --dataset MultiNLI
-```
-
-
-## Sample Commands for running JTT on CivilComments-WILDS
-
-```
-python generate_downstream.py --exp_name jigsaw_sample_exp --dataset jigsaw --n_epochs 3 --lr 2e-5 --weight_decay 0 --method ERM --batch_size 24
-
-bash results/jigsaw/jigsaw_sample_exp/ERM_upweight_0_epochs_3_lr_2e-05_weight_decay_0.0/job.sh
-
-python process_training.py --exp_name jigsaw_sample_exp --dataset jigsaw --folder_name ERM_upweight_0_epochs_3_lr_2e-05_weight_decay_0.0 --lr 1e-05 --weight_decay 0.01 --final_epoch 2 --batch_size 16 --deploy
-
-bash results/jigsaw/jigsaw_sample_exp/train_downstream_ERM_upweight_0_epochs_3_lr_2e-05_weight_decay_0.0/final_epoch2/JTT_upweight_6_epochs_3_lr_1e-05_weight_decay_0.01/job.sh
-
-python analysis.py --exp_name jigsaw_sample_exp/train_downstream_ERM_upweight_0_epochs_3_lr_2e-05_weight_decay_0.0/final_epoch2/ --dataset jigsaw
 ```
