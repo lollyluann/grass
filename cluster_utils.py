@@ -226,23 +226,22 @@ def cluster_and_extract(eps, ms, modelname, epoch, in_dir, out_dir):
     dfc = pd.DataFrame({'idx': np.load(in_dir + 'test_data_i_resnet_' + modelname + '.npy'),
                         'clustered_idx': np.load(in_dir + 'test_data_l_resnet_' + modelname + '.npy')})
 
-    i = 0
     dfs = []
-    print(i, eps, ms)
     for j in [0, 1]:
+        print("Class {}, eps={}, min_samples={}".format(j, eps, ms))
         dist, grads, _, all_is = load_class_data(classi=j, epoch=epoch, base_folder=in_dir)
         dbscan = DBSCAN(eps=eps, min_samples=ms, metric='precomputed')
         dbscan.fit(dist)
+        print("Cluster counts:", Counter(dbscan.labels_))
         plot_data(grads, dbscan.labels_, "Class {} Clustered (eps={}, m={}), train+val".format(j, eps, ms))
 
         idx_mapping = {k:k for k in dbscan.labels_}
         idx_mapping[max(dbscan.labels_)] = -1
-        idx_mapping = {value: key for key, value in idx_mapping.items()}
+        #idx_mapping = {value: key for key, value in idx_mapping.items()}
         adjusted_labels = [idx_mapping[a] for a in dbscan.labels_]
         adjusted_labels = [j * 2 + a if a != 2 else 4 for a in adjusted_labels]
         output_labels = pd.DataFrame({'idx': all_is, 'clustered_idx': adjusted_labels})
         dfs.append(output_labels)
-    i += 1
 
     all_output_labels = dfs[0].append(dfs[1], ignore_index=True).append(dfc, ignore_index=True)
 
