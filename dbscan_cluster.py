@@ -50,7 +50,7 @@ def nmi_matrix(clusterings):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_name", type=str, default="pretrained-50")
-    parser.add_argument("--out_dir", type=str, default="cub/data/waterbird_complete95_forest2water2")
+    parser.add_argument("--out_dir", type=str, default="cub/data/waterbird_complete95_forest2water2/")
     parser.add_argument("--extracted_dir", type=str, default="extracted/")
     parser.add_argument("--eps", type=float, default=0.4)
     parser.add_argument("--min_samples", type=int, default=100)

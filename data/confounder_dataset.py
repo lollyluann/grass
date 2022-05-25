@@ -65,7 +65,7 @@ class ConfounderDataset(Dataset):
             assert split in ("train", "val",
                              "test"), f"{split} is not a valid split"
             if exclude_outliers:
-                mask = (self.split_array == self.split_dict[split]) & (self.glabel_array != 4)
+                mask = (self.split_array == self.split_dict[split]) & (self.glabel_array != -1)
             else:
                 mask = self.split_array == self.split_dict[split]
 

@@ -147,6 +147,9 @@ if __name__ == "__main__":
 
     args_p = parser.parse_args()
 
+    if args_p.get_fc_grads:
+        assert args_p.alt_model_dir
+
     # os.putenv("CUDA_VISIBLE_DEVICES", "1")
     device = torch.device("cuda")
 

@@ -62,7 +62,7 @@ class CUBDataset(ConfounderDataset):
         if override_groups_file and override_groups_file!="None":
             # read in file and set as group array
             self.group_array = pd.read_csv(os.path.join(self.data_dir, override_groups_file), index_col=False)['clustered_idx'].to_numpy()
-            assert np.unique(self.group_array).size == self.n_groups #+ 1
+            #assert np.unique(self.group_array).size == self.n_groups #+ 1
         else:
             self.group_array = (self.y_array * (self.n_groups / 2) +
                                 self.confounder_array).astype("int")
