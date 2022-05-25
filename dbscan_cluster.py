@@ -54,13 +54,14 @@ if __name__ == "__main__":
     parser.add_argument("--extracted_dir", type=str, default="extracted/")
     parser.add_argument("--eps", type=float, default=0.4)
     parser.add_argument("--min_samples", type=int, default=100)
+    parser.add_argument("--epoch", type=int, required=True)
 
     args = parser.parse_args()
-    cluster_and_extract(eps=args.eps, ms=args.min_samples, modelname=args.model_name, in_dir=args.extracted_dir, out_dir=args.out_dir)
+    cluster_and_extract(eps=args.eps, ms=args.min_samples, modelname=args.model_name, epoch=args.epoch, in_dir=args.extracted_dir, out_dir=args.out_dir)
 
 
     # DBSCAN testing with true group labels
-    '''dist, grads, groups, all_i = load_class_data(classi=0)
+    '''dist, grads, groups, all_i = load_class_data(classi=0, epoch=5, base_folder=args.extracted_dir)
     
     arss = []
     nmis = []

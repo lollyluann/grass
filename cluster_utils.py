@@ -184,12 +184,9 @@ def cluster_metrics(labels, groups):
       print(i, 'Minority IOU:', iou_compute(min_true, np.where(labels==i)[0]))
 
 
-def load_class_data(classi=0):
-  base_folder = ''
-
+def load_class_data(classi, epoch, base_folder):
   data_subset = "train"
   modelname = "pretrained-50"
-  epoch = 5
   grads = np.load(base_folder + modelname + '_weight_bias_grads_' + data_subset + '_epoch' + str(epoch) + '.npy')
   groups = np.load(base_folder + data_subset + '_data_l_resnet_'+modelname+'.npy')
   y = np.load(base_folder + data_subset + '_data_y_resnet_'+modelname+'.npy')
@@ -225,15 +222,15 @@ def load_class_data(classi=0):
   return dist, grads, groups, all_i
 
 
-def cluster_and_extract(eps, ms, modelname, in_dir, out_dir):
+def cluster_and_extract(eps, ms, modelname, epoch, in_dir, out_dir):
     dfc = pd.DataFrame({'idx': np.load(in_dir + 'test_data_i_resnet_' + modelname + '.npy'),
-                        'clustered_idx': np.load('test_data_l_resnet_' + modelname + '.npy')})
+                        'clustered_idx': np.load(in_dir + 'test_data_l_resnet_' + modelname + '.npy')})
 
     i = 0
     dfs = []
     print(i, eps, ms)
     for j in [0, 1]:
-        dist, grads, _, all_is = load_class_data(j)
+        dist, grads, _, all_is = load_class_data(classi=j, epoch=epoch, base_folder=in_dir)
         dbscan = DBSCAN(eps=eps, min_samples=ms, metric='precomputed')
         dbscan.fit(dist)
         plot_data(grads, dbscan.labels_, "Class {} Clustered (eps={}, m={}), train+val".format(j, eps, ms))
